@@ -3,13 +3,17 @@ class UsersController < ApplicationController
   def index
     users = User.all
 
-    render json: users
+    render json: UserSerializer.new(users)
   end
 
   def show
     user = User.find(user_params[:id])
 
-    render json:user
+    render json: UserSerializer.new(user)
+  end
+
+  def create
+
   end
 
   private
