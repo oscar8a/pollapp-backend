@@ -1,4 +1,3 @@
-class VoteSerializer
+class VoteOptionSerializer
   include FastJsonapi::ObjectSerializer
-  attributes 
 end

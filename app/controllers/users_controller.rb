@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def show
     user = User.find(user_params[:id])
 
-    render json: UserSerializer.new(user)
+    render json: user, include: [:polls, :vote_options]
   end
 
   def create
@@ -18,6 +18,6 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.permit(:id, :username, :password, :email)
+    params.permit(:id, :username, :password, :email, :votes)
   end
 end

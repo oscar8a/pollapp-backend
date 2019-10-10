@@ -9,7 +9,7 @@ class PollsController < ApplicationController
   def show
   poll = Poll.find(poll_params[:id])
 
-  render json: PollSerializer.new(poll)
+  render json: poll
   end
 
   def create
@@ -20,7 +20,7 @@ class PollsController < ApplicationController
 
   private
   def poll_params
-    params.permit(:poll_name)
+    params.permit(:id, :poll_name)
   end
 
 end
