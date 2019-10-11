@@ -7,13 +7,38 @@ class UsersController < ApplicationController
   end
 
   def show
-    user = User.find(user_params[:id])
+    user_id = params[:id]
 
-    render json: user, include: [:polls, :vote_options]
+    if user_id.to_i == logged_in_user_id
+      user = User.find(user_id)
+      render json: user, include: [:polls, :vote_options]
+    else 
+      render json: {
+        go_away: true
+      }, status: :unauthorized
+    end
   end
 
   def create
+    user = User.create(user_params)
+    
+    if user.valid?
+      render json: token(user)
+    else
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    end 
+  end
 
+  #FROM MEDIUM BLOG FOR AUTH
+  def find
+    user = User.find_by(username: params[:user][:username])
+
+    if user
+      render json: user
+    else
+      errors = user.errors.full_messages
+      render json: errors
+    end
   end
 
   private

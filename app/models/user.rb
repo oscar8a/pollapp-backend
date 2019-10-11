@@ -10,4 +10,9 @@ class User < ApplicationRecord
   has_many :votes
   has_many :vote_options, through: :votes
   has_many :polls
+
+  has_secure_password
+
+
+  
 end

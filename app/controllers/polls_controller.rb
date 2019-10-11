@@ -3,7 +3,8 @@ class PollsController < ApplicationController
   def index
     polls = Poll.all
 
-    render json: PollSerializer.new(polls)
+    render json: polls
+    #PollSerializer.new(polls)
   end
 
   def show
