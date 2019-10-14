@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
     if user_id.to_i == logged_in_user_id
       user = User.find(user_id)
-      render json: user, include: [:polls, :vote_options]
+      render json: UserSerializer.new(user, include: [:polls])
     else 
       render json: {
         go_away: true
