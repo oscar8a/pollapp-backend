@@ -36,19 +36,19 @@ class UsersController < ApplicationController
   end
 
   #FROM MEDIUM BLOG FOR AUTH
-  def find
-    user = User.find_by(username: params[:user][:username])
+  # def find
+  #   user = User.find_by(username: params[:user][:username])
 
-    if user
-      render json: user
-    else
-      errors = user.errors.full_messages
-      render json: errors
-    end
-  end
+  #   if user
+  #     render json: user
+  #   else
+  #     errors = user.errors.full_messages
+  #     render json: errors
+  #   end
+  # end
 
   private
   def user_params
-    params.require(:user).permit(:id, :username, :password, :email, :votes)
+    params.permit(:id, :username, :email, :password, :votes)
   end
 end
