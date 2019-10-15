@@ -29,6 +29,12 @@ class UsersController < ApplicationController
     end 
   end
 
+  def destroy
+    user = User.find(params[:id])
+
+    user.destroy
+  end
+
   #FROM MEDIUM BLOG FOR AUTH
   def find
     user = User.find_by(username: params[:user][:username])
