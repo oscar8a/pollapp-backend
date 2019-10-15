@@ -1,6 +1,7 @@
 class Poll < ApplicationRecord
   belongs_to :user
   has_many :vote_options
+  has_many :votes, through: :vote_options
 
 
   # def pollVotes
