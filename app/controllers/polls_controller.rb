@@ -14,14 +14,16 @@ class PollsController < ApplicationController
   end
 
   def create
+    poll = Poll.create(poll_params)
 
+    render json: poll
   end
 
 
 
   private
   def poll_params
-    params.permit(:id, :poll_name)
+    params.require(:poll).permit(:user_id, :poll_name)
   end
 
 end
