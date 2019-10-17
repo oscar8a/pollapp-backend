@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :tokens, only: [:create]
 
   root to: 'polls#index'
+
+  post '/polls/:id', to: 'polls#update'
   
   post 'find_user' => 'users#find'
 
