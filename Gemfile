@@ -52,3 +52,6 @@ gem 'knock'
 gem 'jwt'
 
 gem "dotenv-rails", "~> 2.7"
+
+#Background Processing
+gem 'sidekiq'

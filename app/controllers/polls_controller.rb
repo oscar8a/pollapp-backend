@@ -20,6 +20,9 @@ class PollsController < ApplicationController
   def create
     poll = Poll.create(poll_params)
 
+    # ADD WORKER HERE WITH THE TIME SCHEDULE USER WANTS POLL TO END
+    # PollWorker.perform_in(5.second)
+
     render json: poll
   end
 
@@ -27,7 +30,7 @@ class PollsController < ApplicationController
     poll = Poll.find(poll_params[:id])
 
     poll.update(poll_params)
-    
+
     render json: poll
   end
 
