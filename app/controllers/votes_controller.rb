@@ -5,8 +5,8 @@ class VotesController < ApplicationController
 
     render json: vote
 
-    voteOption = VoteOption.find(vote.vote_option_id)
-    voteOption.addVoteToVoteOptionCounter
+    # voteOption = VoteOption.find(vote.vote_option_id)
+    # voteOption.addVoteToVoteOptionCounter
   end
 
   private

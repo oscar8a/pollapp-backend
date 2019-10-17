@@ -7,16 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: 'oscar', email: 'oscaremail', password: 'oscarpassword')
-User.create(username: 'user1', email: 'user1email', password: 'user1password')
-User.create(username: 'user2', email: 'user2email', password: 'user2password')
-User.create(username: 'user3', email: 'user3email', password: 'user3password')
-User.create(username: 'user4', email: 'user4email', password: 'user4password')
+User.create(username: 'ross', email: 'rossemail', password: 'rosspassword')
+User.create(username: 'jack', email: 'jackemail', password: 'jackpassword')
+User.create(username: 'morgan', email: 'morganemail', password: 'morganpassword')
+User.create(username: 'gulnoza', email: 'gulnozaemail', password: 'gulnozapassword')
 
-Poll.create(poll_name: 'Wings with...?', user_id: 2)
+Poll.create(poll_name: 'Wings with...?', user_id: 2, is_active: true)
 VoteOption.create(option_name: 'Blu Cheez', poll_id: 1)
 VoteOption.create(option_name: 'Rawnch', poll_id: 1)
 
-Poll.create(poll_name: 'You order on a...', user_id: 1)
+Poll.create(poll_name: 'BEC on a...', user_id: 1, is_active: true)
 VoteOption.create(option_name: 'Hero', poll_id: 2)
 VoteOption.create(option_name: 'Roll', poll_id: 2)
 

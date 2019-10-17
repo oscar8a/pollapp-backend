@@ -3,6 +3,7 @@ class Poll < ApplicationRecord
   has_many :vote_options
   has_many :votes, through: :vote_options
 
+  
 
   # def pollVotes
   #   poll = Poll.find(poll_params[:id])

@@ -4,7 +4,11 @@ class PollsController < ApplicationController
     polls = Poll.all
 
     # render json: polls
-    render json: PollSerializer.new(polls)
+    options = {
+      include: [:vote_options]
+    }
+    
+    render json: PollSerializer.new(polls, options)
   end
 
   def show
@@ -19,11 +23,19 @@ class PollsController < ApplicationController
     render json: poll
   end
 
+  def update
+    poll = Poll.find(poll_params[:id])
+
+    poll.update(poll_params)
+    
+    render json: poll
+  end
+
 
 
   private
   def poll_params
-    params.permit(:id, :user_id, :poll_name)
+    params.permit(:id, :user_id, :poll_name, :is_active)
     # params.require(:poll).permit(:user_id, :poll_name)
   end
 
