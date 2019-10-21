@@ -18,14 +18,15 @@ class PollsController < ApplicationController
   end
 
   def create
-    parameters = poll_params.except(:duration)
-
     duration = poll_params[:duration]
+
+    parameters = poll_params.except(:duration)
 
     poll = Poll.create(parameters)
 
     # ADD WORKER HERE WITH THE TIME SCHEDULE USER WANTS POLL TO END
     # PollWorker.perform_in(5.second)
+    ClosePollJob.set(wait: duration.to_i.seconds).perform_later(poll)
 
     render json: poll
   end
