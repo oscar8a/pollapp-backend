@@ -18,7 +18,15 @@ class PollsController < ApplicationController
   end
 
   def create
-    poll = Poll.create(poll_params)
+    duration = poll_params[:duration]
+
+    parameters = poll_params.except(:duration)
+
+    poll = Poll.create(parameters)
+
+    # ADD WORKER HERE WITH THE TIME SCHEDULE USER WANTS POLL TO END
+    # PollWorker.perform_in(5.second)
+    ClosePollJob.set(wait: duration.to_i.seconds).perform_later(poll)
 
     render json: poll
   end
@@ -27,7 +35,7 @@ class PollsController < ApplicationController
     poll = Poll.find(poll_params[:id])
 
     poll.update(poll_params)
-    
+
     render json: poll
   end
 
@@ -35,7 +43,7 @@ class PollsController < ApplicationController
 
   private
   def poll_params
-    params.permit(:id, :user_id, :poll_name, :is_active)
+    params.permit(:id, :user_id, :poll_name, :is_active, :duration)
     # params.require(:poll).permit(:user_id, :poll_name)
   end
 
