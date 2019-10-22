@@ -8,7 +8,8 @@ class PollsController < ApplicationController
       include: [:vote_options]
     }
     
-    render json: PollSerializer.new(polls, options)
+    render json: PollSerializer.new(polls)
+    # render json: PollSerializer.new(polls, options)
   end
 
   def show
