@@ -6,9 +6,9 @@ class VotesController < ApplicationController
     if @userVotes.empty?
       vote = Vote.create(vote_params)
 
-      render json: vote
+      render json: vote, message: "Your Vote has been Casted Successfully"
     else
-      render json: {message: "Already Voted"}
+      render json: { errors: ["There is a vote already casted with your credentials for this option"] }, status: :forbidden
     end
     # voteOption = VoteOption.find(vote.vote_option_id)
     # voteOption.addVoteToVoteOptionCounter
