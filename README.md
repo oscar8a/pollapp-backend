@@ -29,20 +29,18 @@ You also provide the 2 options you want user to vote on. All users that navigate
 
 ..* You are able to see how many votes have been casted in the poll, but you will not be able to see the results until poll is closed. 
 
-
 ### Installation
-First, I will begin with the Back end setup. The repo for that is here: [Back-End Polling App](https://github.com/ozkr8a/pollapp-backend)
+First, I will begin with the Back end setup. The Front-End repo is here: [Front-End Polling App](https://github.com/ozkr8a/pollapp-frontend)
 
-Setting up the Rails API:
-1. Start up the Rails Server ### `rails server`
-2. 
+## Setting up the Rails API:
+A new terminal will need to be opened for each server. Make sure the database is created by running `rails db:create`
 
-### `npm start`
+1. Start up the Rails Server `rails server`
+2. Start Redis Server:    `redis-server`
+3. Start Sidekiq: `bundle exec sidekiq`
 
-Runs the app in the development mode.<br />
+## Launching the Front-End App
+
+1. `npm start` runs the app in the development mode.
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-This is for the Back end part only.
