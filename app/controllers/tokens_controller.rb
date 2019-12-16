@@ -5,7 +5,7 @@ class TokensController < ApplicationController
     if user && user.authenticate(params[:password])
       render json: token(user)
     else
-      render json: { errors: [ "That didn't match any users WE know about 💁" ] }, status: :unprocessable_entity
+      render json: { errors: [ "User Not Found" ] }, status: :unprocessable_entity
     end 
   end
 
