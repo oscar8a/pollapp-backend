@@ -3,7 +3,6 @@ class PollsController < ApplicationController
   def index
     polls = Poll.all
 
-    # render json: polls
     options = {
       include: [:vote_options]
     }
@@ -39,8 +38,6 @@ class PollsController < ApplicationController
 
     render json: poll
   end
-
-
 
   private
   def poll_params
