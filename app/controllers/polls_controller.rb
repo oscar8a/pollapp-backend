@@ -3,7 +3,6 @@ class PollsController < ApplicationController
   def index
     polls = Poll.all
 
-    # render json: polls
     options = {
       include: [:vote_options]
     }
@@ -27,7 +26,7 @@ class PollsController < ApplicationController
 
     # ADD WORKER HERE WITH THE TIME SCHEDULE USER WANTS POLL TO END
     # PollWorker.perform_in(5.second)
-    ClosePollJob.set(wait: duration.to_i.seconds).perform_later(poll)
+    ClosePollJob.set(wait: duration.to_i.minutes).perform_later(poll)
 
     render json: poll
   end
@@ -39,8 +38,6 @@ class PollsController < ApplicationController
 
     render json: poll
   end
-
-
 
   private
   def poll_params

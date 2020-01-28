@@ -9,14 +9,12 @@ class UsersController < ApplicationController
   def show
     user_id = params[:id]
 
-    if user_id.to_i == logged_in_user_id
-      user = User.find(user_id)
-      render json: UserSerializer.new(user, include: [:polls])
-    else 
-      render json: {
-        go_away: true
-      }, status: :unauthorized
+    if user_id.to_i != logged_in_user_id
+      return render json: { go_away: true }, status: :unauthorized
     end
+
+    user = User.find(user_id)
+    render json: UserSerializer.new(user, include: [:polls])
   end
 
   def create
