@@ -22,4 +22,10 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 .env
+<<<<<<< HEAD
 dump.rdb
+=======
+
+# Local Netlify folder
+.netlify
+>>>>>>> 6b36ef1c9b5bb48d4c59c49c3ba96ce149c2440c
