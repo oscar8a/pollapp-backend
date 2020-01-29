@@ -6,24 +6,14 @@ class Vote < ApplicationRecord
   # validates_uniqueness_of :vote_option, scope: [:vote_option_id, :user_id]
   # validates_uniqueness_of :user_id, scope: [:vote_option_id, :user_id]
 
-  validates :unique_poll_vote?, exclusion: [false] 
+  validates :unique_poll_vote?, exclusion: [true] 
 
   def poll
     vote_option.poll
   end
 
-<<<<<<< HEAD
   def unique_poll_vote?
     poll.votes.where(user_id: user.id).exists?
-=======
-  validates :unique_poll_vote?, inclusion: [true] 
-
-  def poll
-    vote_option.poll
   end
 
-  def unique_poll_vote?
-    poll.votes.where(user_id: user.id).empty?
->>>>>>> master
-  end
 end

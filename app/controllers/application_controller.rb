@@ -12,7 +12,6 @@ class ApplicationController < ActionController::API
   end
 
   private
-
   def secret_token
     ENV["JWT_SECRET_KEY"]
   end
