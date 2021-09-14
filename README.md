@@ -34,6 +34,10 @@ First, I will begin with the Back end setup. The Front-End repo is here: [Front-
 ## Setting up the Rails API:
 A new terminal will need to be opened for each server. Make sure the database is created by running `rails db:create`
 
+Run `rails db:migrate` to run the DB migrations.
+
+It is best to seed data. Add to the `seed.rb` file then run `rails db:seed`; Otherwise app will launch with Empty databases.
+
 1. Start up the Rails Server `rails server`
 2. Start Redis Server:    `redis-server`
 3. Start Sidekiq: `bundle exec sidekiq`

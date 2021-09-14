@@ -12,11 +12,10 @@ class Vote < ApplicationRecord
     vote_option.poll
   end
 
-<<<<<<< HEAD
   def unique_poll_vote?
     poll.votes.where(user_id: user.id).exists?
-=======
-  validates :unique_poll_vote?, inclusion: [true] 
+    validates :unique_poll_vote?, inclusion: [true]
+  end
 
   def poll
     vote_option.poll
@@ -24,6 +23,5 @@ class Vote < ApplicationRecord
 
   def unique_poll_vote?
     poll.votes.where(user_id: user.id).empty?
->>>>>>> master
   end
 end
