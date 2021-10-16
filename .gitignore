@@ -24,7 +24,5 @@
 .env
 dump.rdb
 
-gemfile.lock
-
 # Local Netlify folder
 .netlify
